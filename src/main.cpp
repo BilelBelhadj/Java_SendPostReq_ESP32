@@ -1,3 +1,12 @@
+/*
+  Autheur     : Bilel Belhadj
+  Description : use the esp32 to send post request vers an endpoint using http
+  Date        : 02-04-2023
+  Version     : 0.0.1
+  Source      : https://randomnerdtutorials.com/esp32-http-get-post-arduino/
+*/
+
+
 #include <Arduino.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
