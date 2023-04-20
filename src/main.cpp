@@ -6,7 +6,6 @@
   Source      : https://randomnerdtutorials.com/esp32-http-get-post-arduino/
 */
 
-
 #include <Arduino.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
