@@ -4,7 +4,8 @@
   Date        : 02-04-2023
   Version     : 0.0.1
   Source      : https://randomnerdtutorials.com/esp32-http-get-post-arduino/
-                projet precedent 
+                https://randomnerdtutorials.com/esp32-access-point-ap-web-server/
+                projet precedent d'apprentissage 
 */
 
 #include <Arduino.h>
@@ -13,23 +14,20 @@
 #include <HTTPClient.h>
 
 HTTPClient http;    //create http client
+WiFiServer server(80);  // creation d'un serveur web on port 80
+
 
 // credentials of my wifi hotspot
 const char* ssidHotspot = "ESP32_Bilel";    // ssid pour le point d'accees
 const char* passwordHotsport = "bilel2023"; // mot de passe pour le point d'accees
+const char* serverUrl = "http://192.168.2.91:8080/temperature"; // the ip adress of the server with the endpoint
+const String DEVICE = "E1P1";   //device name 
 const int DELAY = 5000;
 
-//declaration des variables
-String line = "", line1 = "", ssidWifiStr = "", pwdWifiStr = "";
-
-WiFiServer server(80);  // creation d'un serveur web on port 80
-
-// the ip adress of the server with the endpoint
-const char* serverUrl = "http://192.168.2.91:8080/temperature";
-const String DEVICE = "E1P1";   //device name 
 
 //variables declaration
 float temperature = 0, humidite = 0;
+String line = "", line1 = "", ssidWifiStr = "", pwdWifiStr = "";
 
 //get temperature with random
 float getTemperature() {
@@ -55,9 +53,8 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.softAPIP());
 
-  server.begin();  // commencer le serveur
+  server.begin();  // start the server
 }
-
 
 
 void loop() {
